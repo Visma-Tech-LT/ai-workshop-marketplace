@@ -1,0 +1,22 @@
+{
+  "name": "ai-workshop",
+  "owner": {
+    "name": "Mindaugas Morkunas"
+  },
+  "metadata": {
+    "description": "Spec-driven development workflow for AI Engineering Workshop — research, plan, implement, review.",
+    "pluginRoot": "./plugins"
+  },
+  "plugins": [
+    {
+      "name": "sdw",
+      "source": "./plugins/sdw",
+      "description": "Spec-driven workflow: research → plan → implement → review. Includes 6 specialist agents and 5 workflow commands.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Mindaugas Morkunas"
+      },
+      "keywords": ["workflow", "spec-driven", "agents", "research", "planning", "code-review"]
+    }
+  ]
+}
