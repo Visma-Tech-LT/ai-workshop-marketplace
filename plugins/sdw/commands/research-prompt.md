@@ -1,5 +1,5 @@
 ---
-description: 
+description: Transform a "do X" prompt into a research-focused prompt. Run this when you catch yourself about to build before understanding.
 ---
 
 # Research Prompt Transformer

@@ -1,114 +1,115 @@
 ---
-description: 
+description: Review recent code changes for quality, security, and correctness. Run before committing.
 ---
 
 # Code Review
 
-Use the code-reviewer agent to conduct a comprehensive review of all recent code changes. The agent will examine the code for security vulnerabilities, code quality issues, performance problems, testing coverage, and compatibility concerns.
+Review recent code changes thoroughly before committing. Problems found here are free to fix — problems found after merging are not.
 
-The code-reviewer agent will provide specific, actionable feedback with code examples and prioritize critical issues that could affect security, functionality, or maintainability.
+**Output**: Save to `.claude/ai/review-YYYY-MM-DD-topic.md`
 
-**Output**: Review report will be saved to `.claude/ai/review-YYYY-MM-DD-description.md`
+## Review scope
 
-## Steps to follow:
+Run `git diff` to see what changed. Focus on modified files and their immediate context.
 
-1. **Gather metadata for the review report:**
-   - Gather relevant metadata from git (commit hash, branch name, repository name, timestamps)
-   - Filename: `.claude/ai/review-YYYY-MM-DD-description.md`
-     - Format: `review-YYYY-MM-DD-description.md` where:
-       - YYYY-MM-DD is today's date
-       - description is a brief kebab-case description
-     - Examples:
-       - `review-2025-10-03-feature-implementation.md`
-       - `review-2025-10-03-bug-fixes.md`
+## What to look for
 
-2. **Use the code-reviewer agent with metadata:**
-   - Pass the metadata to the code-reviewer agent for structured report generation
-   - The agent will examine code for security vulnerabilities, quality issues, performance problems, testing coverage, and compatibility concerns
-   - Agent will generate a review report with proper frontmatter and metadata
+**Security**
+- No exposed secrets, API keys, or credentials in code or config
+- Input is validated at system boundaries
+- No obvious injection vulnerabilities
 
-3. **Review report structure:**
-   - The agent will create a comprehensive report with metadata followed by content:
+**Correctness**
+- Logic does what it claims to do
+- Edge cases are handled
+- Errors are surfaced, not silently swallowed
 
-     ```markdown
-     ---
-     date: [Current date and time with timezone in ISO format]
-     reviewer: Claude
-     git_commit: [Current commit hash]
-     branch: [Current branch name]
-     repository: [Current repository name]
-     review_type: "code-review"
-     tags: [code-review, quality-assurance, security]
-     status: complete
-     last_updated: [Current date in YYYY-MM-DD format]
-     last_updated_by: Claude
-     related_plan: "[Path to related plan document if available, e.g., .claude/ai/plan-2025-10-01-complete-validation-coverage.md]"
-     related_research: "[Path to related research document if available, e.g., .claude/ai/research-2025-10-01-validation-status.md]"
-     # Code Review Report: [Issue Title/Description]
+**Test integrity** — zero tolerance
+- No commented-out assertions
+- No skip decorators added to avoid failures
+- No test expectations weakened to match a wrong implementation
+- If tests are failing and genuinely hard to fix, stop and explain why — don't paper over them
 
-     **Date**: [Current date and time with timezone]
-     **Reviewer**: Claude Code Reviewer
-     **Git Commit**: [Current commit hash]
-     **Branch**: [Current branch name]
-     **Repository**: [Repository name]
-     **Status**: Review Complete
+**Code quality**
+- Code is clear enough for a teammate to understand without explanation
+- No duplicated logic that could be consolidated
+- New code follows existing patterns in the surrounding files
 
-     ## Related Documents
+**Feature creep**
+- Changes match what was planned — flag anything that wasn't requested
 
-     - **Plan**: [Link to plan document if available]
-     - **Research**: [Link to research document if available]
-     
-     ## Review Summary
+## Run the tests
 
-     - **Overall Status**: ✅ APPROVED / ⚠️ APPROVED WITH CONDITIONS / ❌ REJECTED
-     - **Critical Issues**: X found (must fix before commit)
-     - **Warnings**: X found (should address)
-     - **Suggestions**: X found (optional improvements)
+Run the project's test suite and include results in the report:
+- Pass / fail / skip counts
+- Full error messages and stack traces for any failures
 
-     ## Changes Reviewed
+Don't skip this step.
 
-     [List of files and changes reviewed]
+## Review document
 
-     ## Critical Issues
+Gather git metadata first (commit hash, branch, repo name), then save to `.claude/ai/review-YYYY-MM-DD-topic.md`:
 
-     [Issues that must be fixed]
+```markdown
+---
+date: [ISO date with timezone]
+git_commit: [current commit hash]
+branch: [current branch]
+repository: [repo name]
+status: complete
+---
 
-     ## Warnings
+# Code Review: [Description]
 
-     [Issues that should be addressed]
+**Date**: [date]
+**Git Commit**: [hash]
+**Branch**: [branch]
+**Status**: Review Complete
 
-     ## Suggestions
+## Summary
 
-     [Optional improvements]
+- **Overall**: ✅ APPROVED / ⚠️ APPROVED WITH CONDITIONS / ❌ REJECTED
+- **Critical**: [N] issues — must fix before commit
+- **Warnings**: [N] issues — should fix
+- **Suggestions**: [N] items — optional
 
-     ## Security Analysis
+## Files Reviewed
 
-     [Security-specific findings]
+[List of changed files]
 
-     ## Performance Considerations
+## Test Results
 
-     [Performance-related findings]
+✅ Passed: N | ⏭️ Skipped: N | ❌ Failed: N
 
-     ## Test Coverage
+[Full details for any failures]
 
-     [Testing-related findings]
+## 🚨 Critical (Must Fix)
 
-     [Rest of the review content...]
-     ```
+- **Issue**: [description — file:line]
+- **Problem**: [what's wrong]
+- **Fix**: [what to change]
 
-4. **Save and present review completion:**
-   - Save the review report to `.claude/ai/review-YYYY-MM-DD-description.md`
-   - Present a concise summary of the review findings to the user
-   - Include the path to the generated review report
-   - Highlight any critical issues that require immediate attention
+## ⚠️ Warnings (Should Fix)
 
-The code-reviewer agent will provide specific, actionable feedback with code examples and prioritize critical issues that could affect security, functionality, or maintainability.
+- **Issue**: [description — file:line]
+- **Problem**: [concern]
+- **Fix**: [recommendation]
 
-## Important Notes:
+## 💡 Suggestions (Optional)
 
-- Always run fresh git analysis - the review should reflect the current state of changes
-- The review report should be self-contained with all necessary context
-- Include temporal context (when the review was conducted) via metadata
-- Focus on finding concrete security issues, quality problems, and maintainability concerns
-- Provide specific file paths and line numbers for developer reference
-- Ensure all metadata fields are properly populated using git commands
+- **Issue**: [description — file:line]
+- **Benefit**: [improvement]
+- **Approach**: [how]
+
+## Approval
+
+**Status**: [✅ APPROVED / ⚠️ APPROVED WITH CONDITIONS / ❌ REJECTED]
+
+[Reasoning]
+```
+
+## After saving
+
+Present the path and a short summary. Highlight any critical issues clearly.
+
+If the review finds critical issues: fix them, then run `/sdw:code-review` again.
