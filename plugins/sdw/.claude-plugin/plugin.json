@@ -1,11 +1,18 @@
 {
   "name": "sdw",
   "description": "Spec-driven development workflow. Research your codebase, create implementation plans, implement from the plan, and review what was built. Includes 6 specialist agents and 5 workflow commands.",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "author": {
     "name": "Mindaugas Morkunas"
   },
   "repository": "https://github.com/Visma-Tech-LT/ai-workshop-marketplace",
-  "keywords": ["workflow", "spec-driven", "agents", "research", "planning", "code-review"],
+  "keywords": [
+    "workflow",
+    "spec-driven",
+    "agents",
+    "research",
+    "planning",
+    "code-review"
+  ],
   "license": "MIT"
 }
