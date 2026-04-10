@@ -12,7 +12,7 @@
       "name": "sdw",
       "source": "./plugins/sdw",
       "description": "Spec-driven workflow: research → plan → implement → review. Includes 6 specialist agents and 5 workflow commands.",
-      "version": "2.0.0",
+      "version": "2.0.1",
       "author": {
         "name": "Mindaugas Morkunas"
       },
