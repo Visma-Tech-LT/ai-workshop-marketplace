@@ -3,6 +3,8 @@ name: Version Bump
 on:
   push:
     branches: [main]
+    paths:
+      - 'plugins/**'
 
 jobs:
   bump:
