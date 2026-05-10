@@ -1,4 +1,5 @@
 ---
+name: implement-plan
 description: Implement an approved plan phase by phase. Run after create-plan.
 ---
 

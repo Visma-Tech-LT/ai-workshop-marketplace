@@ -1,4 +1,5 @@
 ---
+name: code-review
 description: Review recent code changes for quality, security, and correctness. Run before committing.
 ---
 

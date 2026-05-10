@@ -1,4 +1,5 @@
 ---
+name: create-plan
 description: Create an implementation plan interactively. Run after research, before implementing.
 ---
 

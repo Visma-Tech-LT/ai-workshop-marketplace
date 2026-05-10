@@ -9,7 +9,7 @@ Plugin marketplace for the **AI Engineering Workshop, Part 2: Spec-Driven Workfl
 /plugin install sdw@ai-workshop
 ```
 
-That's it. You now have 6 agents and 5 workflow commands available.
+That's it. You now have 6 agents and 5 workflow skills available.
 
 ---
 
@@ -19,7 +19,7 @@ That's it. You now have 6 agents and 5 workflow commands available.
 /sdw:research-codebase   →   /sdw:create-plan   →   /sdw:implement-plan   →   /sdw:code-review
 ```
 
-Run each command, review its output, then proceed to the next. This is intentional — explained below.
+Run each skill, review its output, then proceed to the next. This is intentional — explained below.
 
 ### Step by step
 
@@ -57,7 +57,7 @@ Runs tests, checks for security issues, quality problems, test shortcuts. Output
 
 ## Why it's manual and sequential
 
-You might wonder: why not run the whole thing automatically in one command?
+You might wonder: why not run the whole thing automatically in one go?
 
 **The pauses are the lesson.** At each step you have to look at what Claude produced and make a conscious decision:
 
@@ -71,7 +71,7 @@ Those decisions are the habit this workflow is building. If you skip them, you'r
 
 **Context is a resource, not a given.** The `/clear` between phases isn't just housekeeping — it's a forcing function. It makes the document the handoff, not the conversation. `research.md` is what carries knowledge from phase 1 into phase 2. `plan.md` carries it from phase 2 into phase 3. The documents are the contract.
 
-**The workflow only works if you engage with the outputs.** Run the command, read the document, decide to proceed. That's the loop. Once that habit is internalized, you can move faster — but speed comes after the mental model is built, not before.
+**The workflow only works if you engage with the outputs.** Run the skill, read the document, decide to proceed. That's the loop. Once that habit is internalized, you can move faster — but speed comes after the mental model is built, not before.
 
 ---
 
@@ -90,9 +90,9 @@ Claude invokes these automatically. You don't call them directly.
 
 ---
 
-## Commands
+## Skills
 
-| Command | What it does |
+| Skill | What it does |
 |---|---|
 | `/sdw:research-codebase` | Explores the codebase and outputs `research.md` |
 | `/sdw:create-plan` | Interactive planning process, outputs `plan.md` |
@@ -113,10 +113,10 @@ Claude invokes these automatically. You don't call them directly.
 
 ## Customizing
 
-The plugin gives you a base. To tweak a command or agent for your specific project:
+The plugin gives you a base. To tweak a skill or agent for your specific project:
 
 1. Find the installed plugin at `~/.claude/plugins/cache/sdw*/`
-2. Copy the file you want to modify to `.claude/commands/` or `.claude/agents/` in your project
+2. Copy the file you want to modify to `.claude/skills/<name>/SKILL.md` or `.claude/agents/` in your project
 3. Edit it freely — your standalone version is `/research-codebase` (no namespace), the plugin original stays at `/sdw:research-codebase`
 
 > **Note**: Do not edit files in `~/.claude/plugins/cache/` directly. Changes there are wiped on `/plugin update`.

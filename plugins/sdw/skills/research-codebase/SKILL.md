@@ -1,4 +1,5 @@
 ---
+name: research-codebase
 description: Research the codebase and produce research.md. Run this before planning anything.
 ---
 
