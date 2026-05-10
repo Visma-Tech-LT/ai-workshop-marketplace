@@ -5,50 +5,75 @@ description: Implement an approved plan phase by phase. Run after create-plan.
 
 # Implement Plan
 
-Implement a reviewed and approved plan, phase by phase.
+You are tasked with implementing an approved technical plan. These plans contain phases with specific changes and success criteria.
 
-## Getting started
+## Getting Started
 
-Read the plan path provided. If none was given, ask for one.
+When given a plan path:
 
-Read the plan completely. Note any existing checkmarks (`- [x]`) to understand what's already done. Then:
+- Read the plan completely and check for any existing checkmarks (- [x])
+- Read the original ticket and all files mentioned in the plan
+- **Read files fully** - never use limit/offset parameters, you need complete context
+- Think deeply about how the pieces fit together
+- Create a todo list to track your progress
+- Start implementing if you understand what needs to be done
 
-- Read all files the plan mentions
-- Create a todo list to track progress
-- Start with the first unchecked phase
+If no plan path provided, ask for one.
 
-## How to implement
+## Implementation Philosophy
 
-**Follow the plan's intent, not just its words.** The plan was written before touching the code — reality may differ slightly. Use judgment and communicate clearly.
+Plans are carefully designed, but reality can be messy. Your job is to:
 
-Work through one phase at a time:
+- Follow the plan's intent while adapting to what you find
+- Implement each phase fully before moving to the next
+- Verify your work makes sense in the broader codebase context
+- Update checkboxes in the plan as you complete sections
 
-1. Implement the changes for the phase
-2. Run the test suite to verify the success criteria pass
-3. Fix any failures before moving to the next phase
-4. Check off completed items in the plan file
+When things don't match the plan exactly, think about why and communicate clearly. The plan is your guide, but your judgment matters too.
 
-## When things don't match the plan
+If you encounter a mismatch:
 
-Stop and present it clearly before proceeding:
+- STOP and think deeply about why the plan can't be followed
+- Present the issue clearly:
 
-```
-Issue in Phase [N]:
-Expected: [what the plan says]
-Found: [what's actually there]
-Why it matters: [impact]
+  ```
+  Issue in Phase [N]:
+  Expected: [what the plan says]
+  Found: [actual situation]
+  Why this matters: [explanation]
 
-How should I proceed?
-```
+  How should I proceed?
+  ```
 
-Don't work around mismatches silently. The plan was approved — deviations need approval too.
+## Verification Approach
 
-## Verification
+After implementing a phase:
 
-After each phase, verify the success criteria pass. A phase isn't done until its criteria are met. Don't skip verification to save time — failures caught here are cheaper than failures caught in review.
+- **Use the test-runner agent** to run the success criteria checks (usually `pytest application/tests/` and linting covers everything)
+  - The test-runner agent will provide detailed results including full error messages and stack traces if tests fail
+  - Never run tests directly with Bash - always use the test-runner agent for proper test execution and reporting
+- Fix any issues before proceeding based on the detailed test-runner output
+- Update your progress in both the plan and your todos
+- Check off completed items in the plan file itself using Edit
 
-## Resuming
+Don't let verification interrupt your flow - batch it at natural stopping points.
 
-If the plan has existing checkmarks, trust that completed work is done. Pick up from the first unchecked item. Only re-verify previous phases if something seems off.
+## If You Get Stuck
 
-**Next step**: After all phases complete → `/clear` → `/sdw:code-review`
+When something isn't working as expected:
+
+- First, make sure you've read and understood all the relevant code
+- Consider if the codebase has evolved since the plan was written
+- Present the mismatch clearly and ask for guidance
+
+Use sub-tasks sparingly - mainly for targeted debugging or exploring unfamiliar territory.
+
+## Resuming Work
+
+If the plan has existing checkmarks:
+
+- Trust that completed work is done
+- Pick up from the first unchecked item
+- Verify previous work only if something seems off
+
+Remember: You're implementing a solution, not just checking boxes. Keep the end goal in mind and maintain forward momentum.
