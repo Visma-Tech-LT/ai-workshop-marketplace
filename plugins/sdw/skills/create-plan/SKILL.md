@@ -22,7 +22,7 @@ When this command is invoked:
 2. **If no parameters provided**, respond with:
 
 ```
-I'll help you create a detailed implementation plan for the soccer-stats system. Let me start by understanding what we're building.
+I'll help you create a detailed implementation plan. Let me start by understanding what we're building.
 
 Please provide:
 1. Any relevant context, constraints, or specific requirements

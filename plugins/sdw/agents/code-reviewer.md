@@ -231,7 +231,7 @@ date: [Current date and time with timezone in ISO format]
 reviewer: Claude
 git_commit: [Current commit hash]
 branch: [Current branch name]
-repository: "payroll-agentic-tools"
+repository: "[Repository name]"
 review_type: "code-review"
 tags: [code-review, quality-assurance, security]
 status: complete
@@ -247,7 +247,7 @@ related_research: "[Path to related research if found, e.g., .claude/ai/research
 **Reviewer**: Claude Code Reviewer
 **Git Commit**: [Current commit hash]
 **Branch**: [Current branch name]
-**Repository**: payroll-agentic-tools
+**Repository**: [Repository name]
 **Status**: Review Complete
 
 ## Related Documents
