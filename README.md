@@ -5,7 +5,7 @@ Plugin marketplace for the **AI Engineering Workshop, Part 2: Spec-Driven Workfl
 ## Install
 
 ```shell
-/plugin marketplace add github:Visma-Tech-LT/ai-workshop-marketplace
+/plugin marketplace add https://github.com/Visma-Tech-LT/ai-workshop-marketplace
 /plugin install sdw@ai-workshop
 ```
 
