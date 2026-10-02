@@ -1,7 +1,7 @@
 {
   "name": "sdw",
   "description": "Spec-driven development workflow. Research your codebase, create implementation plans, implement from the plan, and review what was built. Includes 6 specialist agents and 5 workflow skills plus an AI maturity check.",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "author": {
     "name": "Mindaugas Morkunas"
   },
