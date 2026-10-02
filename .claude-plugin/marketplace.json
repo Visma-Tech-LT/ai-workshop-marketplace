@@ -11,7 +11,7 @@
     {
       "name": "sdw",
       "source": "./plugins/sdw",
-      "description": "Spec-driven workflow: research → plan → implement → review. Includes 6 specialist agents and 5 workflow skills.",
+      "description": "Spec-driven workflow: research → plan → implement → review. Includes 6 specialist agents and 5 workflow skills plus an AI maturity check.",
       "version": "2.0.4",
       "author": {
         "name": "Mindaugas Morkunas"
