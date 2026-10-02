@@ -18,9 +18,14 @@ do not reword or extend it. How each rubric skill shows up in Claude Code is in
 
 ### 1. Get the insights report
 
-Read `~/.claude/usage-data/report.html`. If it is missing, or its date (file name of the
-newest `report-*.html`, else mtime) is more than 30 days old, stop and ask the person to
-run `/insights` and re-invoke this skill. If they attached or named another report, use that.
+If the person attached or named a report, use that and skip to reading it.
+
+Otherwise generate a fresh one: run `claude -p "/insights"` with Bash (timeout 600000 ms;
+it takes a few minutes). It prints the path of the new `report-<date>.html` and updates
+`~/.claude/usage-data/report.html`. Read the printed path. If the command fails or prints
+no path, fall back to `~/.claude/usage-data/report.html` when its date (file name of the
+newest `report-*.html`, else mtime) is within 30 days and say so in Data notes; otherwise
+stop and report the command's error.
 
 Read every section, not just the summary. Most weight goes to **How You Use Claude Code**,
 **Top Tools Used**, **Multi-Clauding (Parallel Sessions)**, **Impressive Things You Did**
