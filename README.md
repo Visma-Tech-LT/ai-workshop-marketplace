@@ -9,7 +9,7 @@ Plugin marketplace for the **AI Engineering Workshop, Part 2: Spec-Driven Workfl
 /plugin install sdw@ai-workshop
 ```
 
-That's it. You now have 6 agents and 5 workflow skills available.
+That's it. You now have 6 agents, 5 workflow skills and an AI maturity check available.
 
 ---
 
@@ -99,6 +99,7 @@ Claude invokes these automatically. You don't call them directly.
 | `/sdw:implement-plan` | Implements an approved plan phase by phase |
 | `/sdw:code-review` | Reviews recent changes, runs tests, outputs `review.md` |
 | `/sdw:research-prompt` | Transforms a "do X" prompt into a research-focused prompt |
+| `/sdw:ai-maturity-check` | Places you on the Visma Tech LT AI Skill Maturity Levels (HITL/HOTL) from your `/insights` report and Claude Code config |
 
 ---
 
